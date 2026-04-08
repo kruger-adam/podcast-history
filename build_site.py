@@ -27,6 +27,8 @@ def build():
 
     # Group episodes by month
     months: dict[str, list[dict]] = {}
+    episodes = [ep for ep in episodes if (ep.get("played_up_to", 0) or ep.get("duration", 0)) >= 60]
+
     for ep in episodes:
         dt = datetime.fromisoformat(ep["listened_date"])
         key = dt.strftime("%B %Y")
@@ -52,7 +54,7 @@ def build():
             if duration_min and played_min < duration_min - 1:
                 duration_str = f"{played_min}/{duration_min} min"
             elif duration_min:
-                duration_str = f"{duration_min} min"
+                duration_str = f"✓ {duration_min} min"
             else:
                 duration_str = ""
 
