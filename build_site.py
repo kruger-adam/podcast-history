@@ -50,7 +50,7 @@ def build():
 
             episodes_html += f"""<div class="episode">
   <div class="episode-podcast">{escape(ep.get('podcast_title', ''))}</div>
-  <a class="episode-title" href="https://www.google.com/search?q={quote_plus(ep.get('podcast_title', '') + ' ' + ep.get('title', ''))}" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
+  <a class="episode-title" href="https://www.google.com/search?q={quote_plus(ep.get('podcast_title', '') + ' ' + ep.get('title', ''))}&amp;btnI" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
   <div class="episode-meta">
     {f'<span>{published}</span>' if published else ''}
     {f'<span>{duration_str}</span>' if duration_str else ''}
