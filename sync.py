@@ -92,17 +92,6 @@ def sync():
     print("Fetching podcast list...")
     podcasts = fetch_podcast_list(token)
 
-    # Debug: print full podcast list response
-    resp = requests.post(
-        f"{API_BASE}/user/podcast/list",
-        headers={"Authorization": f"Bearer {token}"},
-        json={},
-    )
-    raw_podcasts = resp.json().get("podcasts", [])
-    if raw_podcasts:
-        print(f"Podcast fields: {list(raw_podcasts[0].keys())}")
-        print(f"First podcast: {json.dumps(raw_podcasts[0], indent=2, default=str)[:800]}")
-
     existing = load_existing()
     known_uuids = {ep["uuid"] for ep in existing["episodes"]}
 

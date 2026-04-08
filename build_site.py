@@ -48,12 +48,17 @@ def build():
             duration_min = ep.get("duration", 0) // 60
             duration_str = f"{duration_min} min" if duration_min else ""
 
+            artwork_url = f"https://static.pocketcasts.com/discover/images/webp/200/{ep.get('podcast_uuid', '')}.webp"
+
             episodes_html += f"""<div class="episode">
-  <div class="episode-podcast">{escape(ep.get('podcast_title', ''))}</div>
-  <a class="episode-title" href="https://www.google.com/search?q={quote_plus(ep.get('podcast_title', '') + ' ' + ep.get('title', ''))}&amp;btnI" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
-  <div class="episode-meta">
-    {f'<span>{published}</span>' if published else ''}
-    {f'<span>{duration_str}</span>' if duration_str else ''}
+  <img class="episode-art" src="{artwork_url}" alt="{escape(ep.get('podcast_title', ''))}" loading="lazy">
+  <div class="episode-info">
+    <div class="episode-podcast">{escape(ep.get('podcast_title', ''))}</div>
+    <a class="episode-title" href="https://www.google.com/search?q={quote_plus(ep.get('podcast_title', '') + ' ' + ep.get('title', ''))}&amp;btnI" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
+    <div class="episode-meta">
+      {f'<span>{published}</span>' if published else ''}
+      {f'<span>{duration_str}</span>' if duration_str else ''}
+    </div>
   </div>
 </div>
 """
