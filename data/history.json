@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "uuid": "c398b0b1-edd4-4333-903d-a5b24df5a43c",
+      "title": "#00 - Daniel Schmachtenberger - AI, Capitalism, Misalignment & Moloch",
+      "podcast_uuid": "7f708340-d17c-013b-f46e-0acc26574db2",
+      "podcast_title": "Win-Win with Liv Boeree",
+      "published_at": "2025-02-21T02:40:00Z",
+      "duration": 5403,
+      "played_up_to": 2730,
+      "url": "https://anchor.fm/s/eefcd0ac/podcast/play/98742142/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-1-21%2F395261310-44100-2-061ec960af06b.mp3",
+      "listened_date": "2026-04-08T23:16:13.077668+00:00"
+    },
+    {
+      "uuid": "9228c983-da78-4d4b-8be7-504bc7c051c4",
+      "title": "Here’s Our Roadmap to a Better AI Future",
+      "podcast_uuid": "ff914e00-4724-0137-f266-1d245fc5f9cf",
+      "podcast_title": "Your Undivided Attention",
+      "published_at": "2026-04-02T09:00:00Z",
+      "duration": 3134,
+      "played_up_to": 1330,
+      "url": "https://mgln.ai/e/1511/afp-955611-injected.calisto.simplecastaudio.com/1beb2301-b954-4718-ac31-006197b9bf1b/episodes/ba6ef48d-40cb-4f9a-aad9-f7b7b017b11b/audio/128/default.mp3?aid=rss_feed&awCollectionId=1beb2301-b954-4718-ac31-006197b9bf1b&awEpisodeId=ba6ef48d-40cb-4f9a-aad9-f7b7b017b11b&feed=rZ0cYk12",
+      "listened_date": "2026-04-08T23:16:13.077668+00:00"
+    },
+    {
+      "uuid": "08c6d590-dc68-460e-b069-1a7c60ae78a3",
+      "title": "Head of Growth (Anthropic): “Claude is growing itself at this point” | Amol Avasare",
+      "podcast_uuid": "aff3edd0-c8a4-013a-d954-0acc26574db2",
+      "podcast_title": "Lenny's Podcast: Product | Career | Growth",
+      "published_at": "2026-04-05T12:31:45Z",
+      "duration": 6768,
+      "played_up_to": 974,
+      "url": "https://api.substack.com/feed/podcast/192660974/b8f2d64f00864328ab4d430039ff6b58.mp3",
+      "listened_date": "2026-04-08T23:16:13.077668+00:00"
+    },
+    {
+      "uuid": "d3eb9e12-d11a-4aa0-9fac-4ed7b9b2bed8",
+      "title": "I gave Claude Code our entire codebase. Our customers noticed. | Al Chen (Galileo)",
+      "podcast_uuid": "29804190-0039-013e-0c58-0e1d7f698bfd",
+      "podcast_title": "How I AI",
+      "published_at": "2026-04-06T11:00:00Z",
+      "duration": 2747,
+      "played_up_to": 7,
+      "url": "https://anchor.fm/s/1035b1568/podcast/play/117808593/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-3%2F421314642-44100-2-27adbc8f8a191.mp3",
+      "listened_date": "2026-04-08T23:16:13.077668+00:00"
+    },
+    {
+      "uuid": "e884b3c6-0bc2-47a3-8ba0-cae96648a84c",
+      "title": "A Conversation with the Team Behind \"The AI Doc\"",
+      "podcast_uuid": "ff914e00-4724-0137-f266-1d245fc5f9cf",
+      "podcast_title": "Your Undivided Attention",
+      "published_at": "2026-03-23T18:00:00Z",
+      "duration": 2876,
+      "played_up_to": 2876,
+      "url": "https://mgln.ai/e/1511/afp-955611-injected.calisto.simplecastaudio.com/1beb2301-b954-4718-ac31-006197b9bf1b/episodes/8c76e137-1aed-4478-a8ee-a5e68ef6af1e/audio/128/default.mp3?aid=rss_feed&awCollectionId=1beb2301-b954-4718-ac31-006197b9bf1b&awEpisodeId=8c76e137-1aed-4478-a8ee-a5e68ef6af1e&feed=rZ0cYk12",
+      "listened_date": "2026-04-08T23:16:13.077668+00:00"
+    },
+    {
       "uuid": "e1889a36-0110-40bd-8a07-a76934517b53",
       "title": "#37 - Tim Urban - Beating Procrastination, Parenthood, and Politics",
       "podcast_uuid": "7f708340-d17c-013b-f46e-0acc26574db2",
@@ -21,5 +76,13 @@
       "listened_date": "2026-04-08T00:37:00.336896+00:00"
     }
   ],
-  "last_synced": "2026-04-08T13:05:33.699325+00:00"
+  "last_synced": "2026-04-08T23:16:13.077668+00:00",
+  "stats": {
+    "timeSilenceRemoval": "0",
+    "timeSkipping": "45",
+    "timeIntroSkipping": "0",
+    "timeVariableSpeed": "8165",
+    "timeListened": "8262",
+    "timesStartedAt": "2026-04-08T00:20:09Z"
+  }
 }
