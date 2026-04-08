@@ -35,7 +35,16 @@ def fetch_history(token: str) -> list[dict]:
         json={},
     )
     resp.raise_for_status()
-    return resp.json().get("episodes", [])
+    data = resp.json()
+    print(f"History response keys: {list(data.keys())}")
+    episodes = data.get("episodes", [])
+    print(f"Episodes returned: {len(episodes)}")
+    if episodes:
+        print(f"First episode keys: {list(episodes[0].keys())}")
+        print(f"First episode: {json.dumps(episodes[0], indent=2, default=str)}")
+    else:
+        print(f"Full response: {json.dumps(data, indent=2, default=str)}")
+    return episodes
 
 
 def fetch_podcast_list(token: str) -> dict[str, str]:
