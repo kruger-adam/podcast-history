@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "0 */12 * * *"  # Every 12 hours
   workflow_dispatch: # Allow manual trigger
+  push:
+    branches: [main]
 
 permissions:
   contents: write
@@ -24,6 +26,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Sync listening history
+        if: github.event_name != 'push'
         env:
           POCKETCASTS_EMAIL: ${{ secrets.POCKETCASTS_EMAIL }}
           POCKETCASTS_PASSWORD: ${{ secrets.POCKETCASTS_PASSWORD }}
@@ -33,6 +36,7 @@ jobs:
         run: python build_site.py
 
       - name: Commit updated data
+        if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
