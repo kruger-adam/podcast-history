@@ -4,6 +4,7 @@
 import json
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import quote_plus
 
 DATA_FILE = Path(__file__).parent / "data" / "history.json"
 OUTPUT_DIR = Path(__file__).parent / "site"
@@ -49,7 +50,7 @@ def build():
 
             episodes_html += f"""<div class="episode">
   <div class="episode-podcast">{escape(ep.get('podcast_title', ''))}</div>
-  <a class="episode-title" href="https://pocketcasts.com/podcasts/{ep.get('podcast_uuid', '')}/episodes/{ep.get('uuid', '')}" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
+  <a class="episode-title" href="https://www.google.com/search?q={quote_plus(ep.get('podcast_title', '') + ' ' + ep.get('title', ''))}" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
   <div class="episode-meta">
     {f'<span>{published}</span>' if published else ''}
     {f'<span>{duration_str}</span>' if duration_str else ''}
