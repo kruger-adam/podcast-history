@@ -49,7 +49,7 @@ def build():
 
             episodes_html += f"""<div class="episode">
   <div class="episode-podcast">{escape(ep.get('podcast_title', ''))}</div>
-  <div class="episode-title">{escape(ep.get('title', ''))}</div>
+  <a class="episode-title" href="https://pocketcasts.com/podcasts/{ep.get('podcast_uuid', '')}/episodes/{ep.get('uuid', '')}" target="_blank" rel="noopener">{escape(ep.get('title', ''))}</a>
   <div class="episode-meta">
     {f'<span>{published}</span>' if published else ''}
     {f'<span>{duration_str}</span>' if duration_str else ''}
