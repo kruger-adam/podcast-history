@@ -27,24 +27,26 @@ def login(email: str, password: str) -> str:
     return token
 
 
-def fetch_history(token: str) -> list[dict]:
-    """Fetch listening history from Pocket Casts."""
-    resp = requests.post(
-        f"{API_BASE}/user/history",
-        headers={"Authorization": f"Bearer {token}"},
-        json={},
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    print(f"History response keys: {list(data.keys())}")
-    episodes = data.get("episodes", [])
-    print(f"Episodes returned: {len(episodes)}")
-    if episodes:
-        print(f"First episode keys: {list(episodes[0].keys())}")
-        print(f"First episode: {json.dumps(episodes[0], indent=2, default=str)}")
-    else:
-        print(f"Full response: {json.dumps(data, indent=2, default=str)}")
-    return episodes
+def fetch_episodes(token: str) -> list[dict]:
+    """Fetch episodes from both history and in-progress endpoints."""
+    all_episodes = {}
+
+    for endpoint in ["/user/history", "/user/in_progress"]:
+        resp = requests.post(
+            f"{API_BASE}{endpoint}",
+            headers={"Authorization": f"Bearer {token}"},
+            json={},
+        )
+        resp.raise_for_status()
+        episodes = resp.json().get("episodes", [])
+        print(f"  {endpoint}: {len(episodes)} episode(s)")
+        for ep in episodes:
+            uuid = ep.get("uuid")
+            if uuid:
+                all_episodes[uuid] = ep
+
+    print(f"Total unique episodes: {len(all_episodes)}")
+    return list(all_episodes.values())
 
 
 def fetch_podcast_list(token: str) -> dict[str, str]:
@@ -84,22 +86,11 @@ def sync():
     print("Logging in...")
     token = login(email, password)
 
-    print("Fetching listening history...")
-    episodes = fetch_history(token)
+    print("Fetching episodes...")
+    episodes = fetch_episodes(token)
 
-    # Also try in_progress endpoint for debugging
-    resp = requests.post(
-        f"{API_BASE}/user/in_progress",
-        headers={"Authorization": f"Bearer {token}"},
-        json={},
-    )
-    in_progress = resp.json()
-    print(f"In-progress response: {json.dumps(in_progress, indent=2, default=str)[:500]}")
-
-    # Try podcast list to see if subscriptions are visible
     print("Fetching podcast list...")
     podcasts = fetch_podcast_list(token)
-    print(f"Subscribed podcasts: {len(podcasts)}")
 
     existing = load_existing()
     known_uuids = {ep["uuid"] for ep in existing["episodes"]}
