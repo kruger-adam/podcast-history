@@ -66,11 +66,21 @@ def build():
     # Stats
     podcast_set = {ep.get("podcast_title") for ep in episodes}
     total_minutes = sum(ep.get("duration", 0) for ep in episodes) // 60
+
+    if total_minutes < 120:
+        time_str = f"{total_minutes:,} min"
+    elif total_minutes < 2 * 24 * 60:
+        hours = total_minutes / 60
+        time_str = f"{hours:.1f} hrs <span class='stat-detail'>({total_minutes:,} min)</span>"
+    else:
+        days = total_minutes / (24 * 60)
+        time_str = f"{days:.1f} days <span class='stat-detail'>({total_minutes:,} min)</span>"
+
     stats_html = f"""
     <div class="stats">
       <div class="stat"><span class="stat-num">{len(episodes)}</span> episodes</div>
       <div class="stat"><span class="stat-num">{len(podcast_set)}</span> podcasts</div>
-      <div class="stat"><span class="stat-num">{total_minutes:,}</span> minutes</div>
+      <div class="stat"><span class="stat-num">{time_str}</span> listened</div>
     </div>
     """
 
