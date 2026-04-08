@@ -87,8 +87,19 @@ def sync():
     print("Fetching listening history...")
     episodes = fetch_history(token)
 
+    # Also try in_progress endpoint for debugging
+    resp = requests.post(
+        f"{API_BASE}/user/in_progress",
+        headers={"Authorization": f"Bearer {token}"},
+        json={},
+    )
+    in_progress = resp.json()
+    print(f"In-progress response: {json.dumps(in_progress, indent=2, default=str)[:500]}")
+
+    # Try podcast list to see if subscriptions are visible
     print("Fetching podcast list...")
     podcasts = fetch_podcast_list(token)
+    print(f"Subscribed podcasts: {len(podcasts)}")
 
     existing = load_existing()
     known_uuids = {ep["uuid"] for ep in existing["episodes"]}
