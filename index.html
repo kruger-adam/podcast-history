@@ -79,12 +79,27 @@
     }
 
     .episode {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
       padding: 0.75rem 0;
       border-bottom: 1px solid var(--border);
     }
 
     .episode:last-child {
       border-bottom: none;
+    }
+
+    .episode-art {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .episode-info {
+      min-width: 0;
     }
 
     .episode-podcast {
@@ -147,17 +162,20 @@
 
     <h2 class="month-header">April 2026</h2>
 <div class="episode">
-  <div class="episode-podcast">Reply All</div>
-  <a class="episode-title" href="https://www.google.com/search?q=Reply+All+%23158+The+Case+of+the+Missing+Hit&amp;btnI" target="_blank" rel="noopener">#158 The Case of the Missing Hit</a>
-  <div class="episode-meta">
-    <span>Mar 05, 2020</span>
-    <span>52 min</span>
+  <img class="episode-art" src="https://static.pocketcasts.com/discover/images/webp/200/eda33410-4f42-0132-cf00-5f4c86fd3263.webp" alt="Reply All" loading="lazy">
+  <div class="episode-info">
+    <div class="episode-podcast">Reply All</div>
+    <a class="episode-title" href="https://www.google.com/search?q=Reply+All+%23158+The+Case+of+the+Missing+Hit&amp;btnI" target="_blank" rel="noopener">#158 The Case of the Missing Hit</a>
+    <div class="episode-meta">
+      <span>Mar 05, 2020</span>
+      <span>52 min</span>
+    </div>
   </div>
 </div>
 
 
     <div class="footer">
-      Last synced: April 08, 2026 at 12:46 AM UTC<br>
+      Last synced: April 08, 2026 at 12:48 AM UTC<br>
       Powered by Pocket Casts
     </div>
   </div>
