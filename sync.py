@@ -61,6 +61,17 @@ def fetch_podcast_list(token: str) -> dict[str, str]:
     return {p["uuid"]: p.get("title", "Unknown Podcast") for p in podcasts}
 
 
+def fetch_stats(token: str) -> dict:
+    """Fetch user listening stats."""
+    resp = requests.post(
+        f"{API_BASE}/user/stats/summary",
+        headers={"Authorization": f"Bearer {token}"},
+        json={},
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
 def load_existing() -> dict:
     """Load the existing history file, or return an empty structure."""
     if DATA_FILE.exists():
@@ -92,6 +103,9 @@ def sync():
     print("Fetching podcast list...")
     podcasts = fetch_podcast_list(token)
 
+    print("Fetching user stats...")
+    stats = fetch_stats(token)
+
     existing = load_existing()
     known_uuids = {ep["uuid"] for ep in existing["episodes"]}
 
@@ -109,6 +123,7 @@ def sync():
             "podcast_title": podcasts.get(ep.get("podcastUuid", ""), ep.get("podcastTitle", "Unknown Podcast")),
             "published_at": ep.get("published", ""),
             "duration": ep.get("duration", 0),
+            "played_up_to": ep.get("playedUpTo", 0),
             "url": ep.get("url", ""),
             "listened_date": now,
         })
@@ -117,6 +132,7 @@ def sync():
     # Sort by listened date descending
     existing["episodes"].sort(key=lambda e: e["listened_date"], reverse=True)
     existing["last_synced"] = now
+    existing["stats"] = stats
 
     save(existing)
     print(f"Sync complete. {new_count} new episode(s) added. Total: {len(existing['episodes'])}")

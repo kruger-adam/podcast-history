@@ -45,8 +45,16 @@ def build():
                 except (ValueError, AttributeError):
                     published = ep["published_at"]
 
-            duration_min = ep.get("duration", 0) // 60
-            duration_str = f"{duration_min} min" if duration_min else ""
+            duration = ep.get("duration", 0)
+            played = ep.get("played_up_to", 0) or duration
+            duration_min = duration // 60
+            played_min = played // 60
+            if duration_min and played_min < duration_min - 1:
+                duration_str = f"{played_min}/{duration_min} min"
+            elif duration_min:
+                duration_str = f"{duration_min} min"
+            else:
+                duration_str = ""
 
             artwork_url = f"https://static.pocketcasts.com/discover/images/webp/200/{ep.get('podcast_uuid', '')}.webp"
 
@@ -65,7 +73,7 @@ def build():
 
     # Stats
     podcast_set = {ep.get("podcast_title") for ep in episodes}
-    total_minutes = sum(ep.get("duration", 0) for ep in episodes) // 60
+    total_minutes = sum(ep.get("played_up_to", 0) or ep.get("duration", 0) for ep in episodes) // 60
 
     if total_minutes < 120:
         time_str = f"{total_minutes:,} min"
@@ -76,11 +84,22 @@ def build():
         days = total_minutes / (24 * 60)
         time_str = f"{days:.1f} days <span class='stat-detail'>({total_minutes:,} min)</span>"
 
+    # Average listening speed from user stats
+    stats = data.get("stats", {})
+    time_listened = int(stats.get("timeListened", 0))
+    time_saved_speed = int(stats.get("timeVariableSpeed", 0))
+    if time_listened > 0:
+        avg_speed = (time_listened + time_saved_speed) / time_listened
+        speed_str = f"""<div class="stat"><span class="stat-num">{avg_speed:.1f}x</span> avg speed</div>"""
+    else:
+        speed_str = ""
+
     stats_html = f"""
     <div class="stats">
       <div class="stat"><span class="stat-num">{len(episodes)}</span> episodes</div>
       <div class="stat"><span class="stat-num">{len(podcast_set)}</span> podcasts</div>
       <div class="stat"><span class="stat-num">{time_str}</span> listened</div>
+      {speed_str}
     </div>
     """
 
