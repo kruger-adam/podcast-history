@@ -146,6 +146,81 @@
       text-align: center;
     }
 
+    .episode-note {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 0.4rem;
+      padding: 0.4rem 0.6rem;
+      background: var(--surface);
+      border-left: 2px solid var(--accent-dim);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .note-label {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .podcast-stats {
+      margin-bottom: 2rem;
+    }
+
+    .podcast-list.collapsed {
+      display: none;
+    }
+
+    .podcast-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .podcast-row:last-child {
+      border-bottom: none;
+    }
+
+    .podcast-row-art {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .podcast-row-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .podcast-row-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .podcast-row-meta {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.1rem;
+    }
+
+    .podcast-bar-bg {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: 0.35rem;
+    }
+
+    .podcast-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
     @media (max-width: 480px) {
       .container { padding: 2rem 1rem; }
       .stats { gap: 1rem; flex-wrap: wrap; }
@@ -167,6 +242,44 @@
     </div>
     
 
+    <div class="podcast-stats">
+<h2 class="month-header" style="cursor:pointer;" onclick="this.nextElementSibling.classList.toggle('collapsed')">Podcasts ▾</h2>
+<div class="podcast-list">
+<div class="podcast-row">
+  <img class="podcast-row-art" src="https://static.pocketcasts.com/discover/images/webp/200/7f708340-d17c-013b-f46e-0acc26574db2.webp" alt="Win-Win with Liv Boeree" loading="lazy">
+  <div class="podcast-row-info">
+    <div class="podcast-row-name">Win-Win with Liv Boeree</div>
+    <div class="podcast-row-meta">2 ep · 2.4 hrs · Apr 2026</div>
+    <div class="podcast-bar-bg"><div class="podcast-bar" style="width:100%"></div></div>
+  </div>
+</div>
+<div class="podcast-row">
+  <img class="podcast-row-art" src="https://static.pocketcasts.com/discover/images/webp/200/ff914e00-4724-0137-f266-1d245fc5f9cf.webp" alt="Your Undivided Attention" loading="lazy">
+  <div class="podcast-row-info">
+    <div class="podcast-row-name">Your Undivided Attention</div>
+    <div class="podcast-row-meta">2 ep · 70 min · Apr 2026</div>
+    <div class="podcast-bar-bg"><div class="podcast-bar" style="width:49%"></div></div>
+  </div>
+</div>
+<div class="podcast-row">
+  <img class="podcast-row-art" src="https://static.pocketcasts.com/discover/images/webp/200/eda33410-4f42-0132-cf00-5f4c86fd3263.webp" alt="Reply All" loading="lazy">
+  <div class="podcast-row-info">
+    <div class="podcast-row-name">Reply All</div>
+    <div class="podcast-row-meta">1 ep · 52 min · Apr 2026</div>
+    <div class="podcast-bar-bg"><div class="podcast-bar" style="width:37%"></div></div>
+  </div>
+</div>
+<div class="podcast-row">
+  <img class="podcast-row-art" src="https://static.pocketcasts.com/discover/images/webp/200/aff3edd0-c8a4-013a-d954-0acc26574db2.webp" alt="Lenny's Podcast: Product | Career | Growth" loading="lazy">
+  <div class="podcast-row-info">
+    <div class="podcast-row-name">Lenny's Podcast: Product | Career | Growth</div>
+    <div class="podcast-row-meta">1 ep · 16 min · Apr 2026</div>
+    <div class="podcast-bar-bg"><div class="podcast-bar" style="width:11%"></div></div>
+  </div>
+</div>
+</div></div>
+
+
     <h2 class="month-header">April 2026</h2>
 <div class="episode">
   <img class="episode-art" src="https://static.pocketcasts.com/discover/images/webp/200/7f708340-d17c-013b-f46e-0acc26574db2.webp" alt="Win-Win with Liv Boeree" loading="lazy">
@@ -177,6 +290,7 @@
       <span>Feb 21, 2025</span>
       <span>45/90 min</span>
     </div>
+    
   </div>
 </div>
 <div class="episode">
@@ -188,6 +302,7 @@
       <span>Apr 02, 2026</span>
       <span>22/52 min</span>
     </div>
+    
   </div>
 </div>
 <div class="episode">
@@ -199,6 +314,7 @@
       <span>Apr 05, 2026</span>
       <span>16/112 min</span>
     </div>
+    
   </div>
 </div>
 <div class="episode">
@@ -210,6 +326,7 @@
       <span>Mar 23, 2026</span>
       <span>✓ 47 min</span>
     </div>
+    
   </div>
 </div>
 <div class="episode">
@@ -221,6 +338,7 @@
       <span>Mar 13, 2025</span>
       <span>✓ 96 min</span>
     </div>
+    
   </div>
 </div>
 <div class="episode">
@@ -232,6 +350,7 @@
       <span>Mar 05, 2020</span>
       <span>✓ 52 min</span>
     </div>
+    
   </div>
 </div>
 
