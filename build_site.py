@@ -7,6 +7,7 @@ from pathlib import Path
 from urllib.parse import quote_plus
 
 DATA_FILE = Path(__file__).parent / "data" / "history.json"
+NOTES_FILE = Path(__file__).parent / "data" / "notes.json"
 OUTPUT_DIR = Path(__file__).parent / "site"
 TEMPLATE = Path(__file__).parent / "template.html"
 
@@ -21,6 +22,11 @@ def build():
 
     with open(TEMPLATE) as f:
         html_template = f.read()
+
+    notes = {}
+    if NOTES_FILE.exists():
+        with open(NOTES_FILE) as f:
+            notes = json.load(f)
 
     episodes = data["episodes"]
     last_synced = data.get("last_synced", "")
@@ -60,6 +66,13 @@ def build():
 
             artwork_url = f"https://static.pocketcasts.com/discover/images/webp/200/{ep.get('podcast_uuid', '')}.webp"
 
+            ep_notes = notes.get(ep.get("uuid", ""), {})
+            notes_html = ""
+            if ep_notes.get("reason"):
+                notes_html += f'<div class="episode-note"><span class="note-label">Why I listened:</span> {escape(ep_notes["reason"])}</div>'
+            if ep_notes.get("takeaways"):
+                notes_html += f'<div class="episode-note"><span class="note-label">Takeaways:</span> {escape(ep_notes["takeaways"])}</div>'
+
             episodes_html += f"""<div class="episode">
   <img class="episode-art" src="{artwork_url}" alt="{escape(ep.get('podcast_title', ''))}" loading="lazy">
   <div class="episode-info">
@@ -69,6 +82,7 @@ def build():
       {f'<span>{published}</span>' if published else ''}
       {f'<span>{duration_str}</span>' if duration_str else ''}
     </div>
+    {notes_html}
   </div>
 </div>
 """
@@ -105,6 +119,70 @@ def build():
     </div>
     """
 
+    # Per-podcast stats
+    podcast_stats: dict[str, dict] = {}
+    for ep in episodes:
+        name = ep.get("podcast_title", "Unknown")
+        if name not in podcast_stats:
+            podcast_stats[name] = {
+                "episodes": 0,
+                "time": 0,
+                "first": None,
+                "last": None,
+                "podcast_uuid": ep.get("podcast_uuid", ""),
+            }
+        ps = podcast_stats[name]
+        ps["episodes"] += 1
+        ps["time"] += ep.get("played_up_to", 0) or ep.get("duration", 0)
+        listened = ep.get("listened_date", "")
+        if listened:
+            if ps["first"] is None or listened < ps["first"]:
+                ps["first"] = listened
+            if ps["last"] is None or listened > ps["last"]:
+                ps["last"] = listened
+
+    ranked = sorted(podcast_stats.items(), key=lambda x: x[1]["time"], reverse=True)
+    max_time = ranked[0][1]["time"] if ranked else 1
+
+    def format_duration(seconds: int) -> str:
+        mins = seconds // 60
+        if mins < 120:
+            return f"{mins} min"
+        hours = mins / 60
+        if hours < 48:
+            return f"{hours:.1f} hrs"
+        return f"{mins / (24 * 60):.1f} days"
+
+    def format_date_short(iso: str) -> str:
+        try:
+            return datetime.fromisoformat(iso).strftime("%b %Y")
+        except (ValueError, AttributeError):
+            return ""
+
+    podcast_stats_html = '<div class="podcast-stats">\n'
+    podcast_stats_html += '<h2 class="month-header" style="cursor:pointer;" onclick="this.nextElementSibling.classList.toggle(\'collapsed\')">Podcasts ▾</h2>\n'
+    podcast_stats_html += '<div class="podcast-list">\n'
+    for name, ps in ranked:
+        pct = (ps["time"] / max_time) * 100
+        artwork_url = f"https://static.pocketcasts.com/discover/images/webp/200/{ps['podcast_uuid']}.webp"
+        date_range = format_date_short(ps["first"])
+        last = format_date_short(ps["last"])
+        if date_range and last and date_range != last:
+            date_range = f"{date_range} – {last}"
+        elif last:
+            date_range = last
+
+        podcast_stats_html += f"""<div class="podcast-row">
+  <img class="podcast-row-art" src="{artwork_url}" alt="{escape(name)}" loading="lazy">
+  <div class="podcast-row-info">
+    <div class="podcast-row-name">{escape(name)}</div>
+    <div class="podcast-row-meta">{ps['episodes']} ep · {format_duration(ps['time'])}{f' · {date_range}' if date_range else ''}</div>
+    <div class="podcast-bar-bg"><div class="podcast-bar" style="width:{pct:.0f}%"></div></div>
+  </div>
+</div>
+"""
+    podcast_stats_html += '</div></div>\n'
+
     synced_str = ""
     if last_synced:
         try:
@@ -115,6 +193,7 @@ def build():
 
     html = html_template.replace("{{EPISODES}}", episodes_html)
     html = html.replace("{{STATS}}", stats_html)
+    html = html.replace("{{PODCAST_STATS}}", podcast_stats_html)
     html = html.replace("{{LAST_SYNCED}}", synced_str)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
