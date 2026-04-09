@@ -81,10 +81,10 @@ def build():
         time_str = f"{total_minutes:,} min"
     elif total_minutes < 2 * 24 * 60:
         hours = total_minutes / 60
-        time_str = f"{hours:.1f} hrs <span class='stat-detail'>({total_minutes:,} min)</span>"
+        time_str = f"{hours:.1f} hrs"
     else:
         days = total_minutes / (24 * 60)
-        time_str = f"{days:.1f} days <span class='stat-detail'>({total_minutes:,} min)</span>"
+        time_str = f"{days:.1f} days"
 
     # Average listening speed from user stats
     stats = data.get("stats", {})
