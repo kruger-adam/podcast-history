@@ -32,6 +32,12 @@ jobs:
           POCKETCASTS_PASSWORD: ${{ secrets.POCKETCASTS_PASSWORD }}
         run: python sync.py
 
+      - name: Sync Google Sheet
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: python sheets.py
+
       - name: Build site
         run: python build_site.py
 
@@ -40,7 +46,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/history.json
+          git add data/history.json data/notes.json
           git diff --staged --quiet || git commit -m "Update listening history"
           git push
 
