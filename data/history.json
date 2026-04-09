@@ -1,6 +1,17 @@
 {
   "episodes": [
     {
+      "uuid": "ec90fbe3-5d5e-4487-86db-d724b65abe54",
+      "title": "#20 - Nick Bostrom - Utopia, Superintelligence and Digital Minds",
+      "podcast_uuid": "7f708340-d17c-013b-f46e-0acc26574db2",
+      "podcast_title": "Win-Win with Liv Boeree",
+      "published_at": "2024-03-29T17:16:35Z",
+      "duration": 3353,
+      "played_up_to": 1076,
+      "url": "https://anchor.fm/s/eefcd0ac/podcast/play/84717100/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-29%2F372613365-44100-2-d05dd363ab3b2.mp3",
+      "listened_date": "2026-04-09T13:06:19.168488+00:00"
+    },
+    {
       "uuid": "c398b0b1-edd4-4333-903d-a5b24df5a43c",
       "title": "#00 - Daniel Schmachtenberger - AI, Capitalism, Misalignment & Moloch",
       "podcast_uuid": "7f708340-d17c-013b-f46e-0acc26574db2",
@@ -76,13 +87,13 @@
       "listened_date": "2026-04-08T00:37:00.336896+00:00"
     }
   ],
-  "last_synced": "2026-04-09T01:35:55.754350+00:00",
+  "last_synced": "2026-04-09T13:06:19.168488+00:00",
   "stats": {
     "timeSilenceRemoval": "0",
     "timeSkipping": "45",
     "timeIntroSkipping": "0",
-    "timeVariableSpeed": "8165",
-    "timeListened": "8262",
+    "timeVariableSpeed": "9968",
+    "timeListened": "9785",
     "timesStartedAt": "2026-04-08T00:20:09Z"
   }
 }
