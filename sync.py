@@ -107,23 +107,34 @@ def sync():
     stats = fetch_stats(token)
 
     existing = load_existing()
-    known_uuids = {ep["uuid"] for ep in existing["episodes"]}
+    known_uuids = {ep["uuid"]: ep for ep in existing["episodes"]}
 
     now = datetime.now(timezone.utc).isoformat()
     new_count = 0
+    updated_count = 0
 
     for ep in episodes:
-        if ep.get("uuid") in known_uuids:
+        uuid = ep.get("uuid")
+        played_up_to = ep.get("playedUpTo", 0)
+        duration = ep.get("duration", 0)
+
+        if uuid in known_uuids:
+            existing_ep = known_uuids[uuid]
+            if played_up_to > existing_ep.get("played_up_to", 0):
+                existing_ep["played_up_to"] = played_up_to
+                updated_count += 1
+            if duration > existing_ep.get("duration", 0):
+                existing_ep["duration"] = duration
             continue
 
         existing["episodes"].append({
-            "uuid": ep.get("uuid"),
+            "uuid": uuid,
             "title": ep.get("title", "Untitled"),
             "podcast_uuid": ep.get("podcastUuid", ""),
             "podcast_title": podcasts.get(ep.get("podcastUuid", ""), ep.get("podcastTitle", "Unknown Podcast")),
             "published_at": ep.get("published", ""),
-            "duration": ep.get("duration", 0),
-            "played_up_to": ep.get("playedUpTo", 0),
+            "duration": duration,
+            "played_up_to": played_up_to,
             "url": ep.get("url", ""),
             "listened_date": now,
         })
@@ -135,7 +146,7 @@ def sync():
     existing["stats"] = stats
 
     save(existing)
-    print(f"Sync complete. {new_count} new episode(s) added. Total: {len(existing['episodes'])}")
+    print(f"Sync complete. {new_count} new, {updated_count} updated. Total: {len(existing['episodes'])}")
 
 
 if __name__ == "__main__":
