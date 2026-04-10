@@ -146,31 +146,7 @@
       text-align: center;
     }
 
-    .episode-notes-toggle {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-top: 0.4rem;
-    }
-
-    .episode-notes-toggle summary {
-      cursor: pointer;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.75rem;
-      list-style: none;
-    }
-
-    .episode-notes-toggle summary::-webkit-details-marker { display: none; }
-
-    .episode-notes-toggle summary::before {
-      content: "Notes ▸";
-    }
-
-    .episode-notes-toggle[open] summary::before {
-      content: "Notes ▾";
-    }
-
-    .episode-note {
+    .episode-notes {
       font-size: 0.8rem;
       color: var(--text-dim);
       margin-top: 0.4rem;
@@ -178,6 +154,30 @@
       background: var(--surface);
       border-left: 2px solid var(--accent-dim);
       border-radius: 0 6px 6px 0;
+    }
+
+    .episode-notes .note-preview {
+      display: inline;
+    }
+
+    .episode-notes .note-full {
+      display: none;
+    }
+
+    .episode-notes.expanded .note-preview {
+      display: none;
+    }
+
+    .episode-notes.expanded .note-full {
+      display: block;
+    }
+
+    .note-toggle {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.75rem;
+      margin-left: 0.3rem;
     }
 
     .note-label {
@@ -314,9 +314,9 @@
       <span>Feb 19, 2026</span>
       <span>✓ 37 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Takeaways:</span> I wasn't familiar with Yoshua Bengio's new startup called Law Zero but it makes total sense to me that we would want to develop an AI that is completely honest. I'm a bit surprised that Bengio said that he's confident that he's found a way to develop a super intelligence that stays completely honest. That's surprising to me that he would have that much confidence with that.
+    <div class="episode-notes"><span class="note-preview"><span class="note-label">Takeaways:</span> I wasn't familiar with Yoshua Bengio's new startup called Law Zero but it makes total sense to me that we would want to... <span class="note-toggle">more</span></span><div class="note-full"><span class="note-label">Takeaways:</span> I wasn't familiar with Yoshua Bengio's new startup called Law Zero but it makes total sense to me that we would want to develop an AI that is completely honest. I'm a bit surprised that Bengio said that he's confident that he's found a way to develop a super intelligence that stays completely honest. That's surprising to me that he would have that much confidence with that.
 
-Even if you could build it, I'm not sure if honesty is necessarily enough because if you build something that's super intelligent, maybe it's honest with you and says, 'Hey I have different goals than you. I don't care about you. I'm gonna kill you.' That's being honest but still not an outcome we want. I'd be curious to hear his thoughts on that.</div></details>
+Even if you could build it, I'm not sure if honesty is necessarily enough because if you build something that's super intelligent, maybe it's honest with you and says, 'Hey I have different goals than you. I don't care about you. I'm gonna kill you.' That's being honest but still not an outcome we want. I'd be curious to hear his thoughts on that. <span class="note-toggle">less</span></div></div>
   </div>
 </div>
 <div class="episode">
@@ -328,9 +328,9 @@ Even if you could build it, I'm not sure if honesty is necessarily enough becaus
       <span>Mar 29, 2024</span>
       <span>✓ 55 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Takeaways:</span> It was interesting to hear that Nick Bostrom is focused now on thinking about what a utopia could look like. I had a concern around whether this might encourage people to race towards superintelligence more by outlining what the utopia might look like. Maybe the point he's trying to make in the book is that it's actually very hard to define a utopia and I think I realized that even more while listening to this episode.
+    <div class="episode-notes"><span class="note-preview"><span class="note-label">Takeaways:</span> It was interesting to hear that Nick Bostrom is focused now on thinking about what a utopia could look like. I had a... <span class="note-toggle">more</span></span><div class="note-full"><span class="note-label">Takeaways:</span> It was interesting to hear that Nick Bostrom is focused now on thinking about what a utopia could look like. I had a concern around whether this might encourage people to race towards superintelligence more by outlining what the utopia might look like. Maybe the point he's trying to make in the book is that it's actually very hard to define a utopia and I think I realized that even more while listening to this episode.
 
-I think the example he gives is that in a utopia you could, in theory, have something where you just take a pill one time and you have perfect health forever, meaning you never have to work out. While that seems like a great thing, a lot of people get enjoyment in the pursuit of a goal. Basically in a utopia any goal that you want you could get with a press of a button. He does say that people could choose to still do the hard thing and not press the button to reach their goal but it does seem like a bit of a strange world to live in where anything you want is available at a press of a button. I do think it's interesting how hard it is to actually define a utopia.</div></details>
+I think the example he gives is that in a utopia you could, in theory, have something where you just take a pill one time and you have perfect health forever, meaning you never have to work out. While that seems like a great thing, a lot of people get enjoyment in the pursuit of a goal. Basically in a utopia any goal that you want you could get with a press of a button. He does say that people could choose to still do the hard thing and not press the button to reach their goal but it does seem like a bit of a strange world to live in where anything you want is available at a press of a button. I do think it's interesting how hard it is to actually define a utopia. <span class="note-toggle">less</span></div></div>
   </div>
 </div>
 <div class="episode">
@@ -342,7 +342,7 @@ I think the example he gives is that in a utopia you could, in theory, have some
       <span>Feb 21, 2025</span>
       <span>✓ 90 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Why I listened:</span> Name of guest looked familiar, and I liked the topics mentioned in the title</div><div class="episode-note"><span class="note-label">Takeaways:</span> I want to check out Scott Alexander's post about meditations on moloch</div></details>
+    <div class="episode-notes"><span class="note-preview"><span class="note-label">Why I listened:</span> Name of guest looked familiar, and I liked the topics mentioned in the... <span class="note-toggle">more</span></span><div class="note-full"><span class="note-label">Why I listened:</span> Name of guest looked familiar, and I liked the topics mentioned in the title<br><span class="note-label">Takeaways:</span> I want to check out Scott Alexander's post about meditations on moloch <span class="note-toggle">less</span></div></div>
   </div>
 </div>
 <div class="episode">
@@ -366,9 +366,9 @@ I think the example he gives is that in a utopia you could, in theory, have some
       <span>Apr 05, 2026</span>
       <span>60/112 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Why I listened:</span> Into Lenny's podcast and into anything Anthropic-related right now</div><div class="episode-note"><span class="note-label">Takeaways:</span> Continue to not quite understand the value of growth/marketing as I feel like if a product is good enough, it'll sell itself. Amol acknowledged this in the episode, but it still isn't clear to me why marketing is needed for Anthropic. Some other things that came to mind are:
+    <div class="episode-notes"><span class="note-preview"><span class="note-label">Why I listened:</span> Into Lenny's podcast and into anything Anthropic-related right... <span class="note-toggle">more</span></span><div class="note-full"><span class="note-label">Why I listened:</span> Into Lenny's podcast and into anything Anthropic-related right now<br><span class="note-label">Takeaways:</span> Continue to not quite understand the value of growth/marketing as I feel like if a product is good enough, it'll sell itself. Amol acknowledged this in the episode, but it still isn't clear to me why marketing is needed for Anthropic. Some other things that came to mind are:
 - He mentioned that often friction is a good thing in onboarding because it improves the quality of onboarding but maybe it's just the way he said it. I think friction implies it's a bad thing and I think that's true. Friction implies something that the user didn't enjoy and I do feel like that's generally fundamentally a bad thing. I think maybe what he's getting at is that sometimes a longer onboarding flow is a better thing, which I agree with if the user wants a longer onboarding flow. For example in your onboarding flow, rather than forcing people to answer a bunch of questions about their preferences, you can give them the option of saying, &quot;Do you want to share some of your preferences with us so that we can better personalize your experience?&quot; but then also give users the option to say, &quot;I'm comfortable with my understanding of the product; let me jump straight to using it.&quot; I think that's probably the ideal model because then you satisfy different user preferences, in that some users will actually want the longer onboarding flow and some will want the shorter one.
-- Another thing that came to mind as I was listening is that he talked about how Anthropic is very focused on the exponential and I think sometimes we assume that exponential is always good but obviously it depends on what it is. For example, COVID cases followed an exponential trend at the beginning and there was an exponential increase in deaths from COVID and obviously that's a bad thing. I'm just, I guess, a bit wary of I understand why a company that's incentivized to make money wants to see exponential growth but is it actually a good thing no matter what the product is? Imagine a product that goes from zero users to 8 billion users in the course of a month, for example, that sees exponential growth like we've never seen before. I think there's a strong case to be made that no matter how good we think the product is, you probably want to roll it out more slowly than that just in case there are negative consequences that you didn't foresee.</div></details>
+- Another thing that came to mind as I was listening is that he talked about how Anthropic is very focused on the exponential and I think sometimes we assume that exponential is always good but obviously it depends on what it is. For example, COVID cases followed an exponential trend at the beginning and there was an exponential increase in deaths from COVID and obviously that's a bad thing. I'm just, I guess, a bit wary of I understand why a company that's incentivized to make money wants to see exponential growth but is it actually a good thing no matter what the product is? Imagine a product that goes from zero users to 8 billion users in the course of a month, for example, that sees exponential growth like we've never seen before. I think there's a strong case to be made that no matter how good we think the product is, you probably want to roll it out more slowly than that just in case there are negative consequences that you didn't foresee. <span class="note-toggle">less</span></div></div>
   </div>
 </div>
 <div class="episode">
@@ -380,7 +380,7 @@ I think the example he gives is that in a utopia you could, in theory, have some
       <span>Mar 23, 2026</span>
       <span>✓ 47 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Why I listened:</span> Watched the doc recently; thought it was arguably the most important film ever made</div></details>
+    <div class="episode-notes"><span class="note-label">Why I listened:</span> Watched the doc recently; thought it was arguably the most important film ever made</div>
   </div>
 </div>
 <div class="episode">
@@ -392,7 +392,7 @@ I think the example he gives is that in a utopia you could, in theory, have some
       <span>Mar 13, 2025</span>
       <span>✓ 96 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Why I listened:</span> I'm a fan of Tim Urban, and I also struggle with procrastination sometimes, and I can relate to parenthood</div><div class="episode-note"><span class="note-label">Takeaways:</span> Interesting to hear that he finds sticks much more helpful than carrots to fight procrastination</div></details>
+    <div class="episode-notes"><span class="note-preview"><span class="note-label">Why I listened:</span> I'm a fan of Tim Urban, and I also struggle with procrastination sometimes, and I can relate to... <span class="note-toggle">more</span></span><div class="note-full"><span class="note-label">Why I listened:</span> I'm a fan of Tim Urban, and I also struggle with procrastination sometimes, and I can relate to parenthood<br><span class="note-label">Takeaways:</span> Interesting to hear that he finds sticks much more helpful than carrots to fight procrastination <span class="note-toggle">less</span></div></div>
   </div>
 </div>
 <div class="episode">
@@ -404,15 +404,24 @@ I think the example he gives is that in a utopia you could, in theory, have some
       <span>Mar 05, 2020</span>
       <span>✓ 52 min</span>
     </div>
-    <details class="episode-notes-toggle"><summary></summary><div class="episode-note"><span class="note-label">Why I listened:</span> Recommended by someone at work; they seem to suggest it was their favourite podcast episode ever, and a bunch of people upvoted that comment</div><div class="episode-note"><span class="note-label">Takeaways:</span> I really enjoyed it! Very fun story to listen to, with an awesome ending</div></details>
+    <div class="episode-notes"><span class="note-preview"><span class="note-label">Why I listened:</span> Recommended by someone at work; they seem to suggest it was their favourite podcast episode ever, and a bunch of people... <span class="note-toggle">more</span></span><div class="note-full"><span class="note-label">Why I listened:</span> Recommended by someone at work; they seem to suggest it was their favourite podcast episode ever, and a bunch of people upvoted that comment<br><span class="note-label">Takeaways:</span> I really enjoyed it! Very fun story to listen to, with an awesome ending <span class="note-toggle">less</span></div></div>
   </div>
 </div>
 
 
     <div class="footer">
-      Last synced: April 10, 2026 at 01:49 PM UTC<br>
+      Last synced: April 10, 2026 at 01:57 PM UTC<br>
       Powered by Pocket Casts
     </div>
   </div>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('note-toggle')) {
+        var notes = e.target.closest('.episode-notes');
+        notes.classList.toggle('expanded');
+        e.target.textContent = notes.classList.contains('expanded') ? 'less' : 'more';
+      }
+    });
+  </script>
 </body>
 </html>
