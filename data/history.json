@@ -7,7 +7,7 @@
       "podcast_title": "Your Undivided Attention",
       "published_at": "2026-02-19T10:00:00Z",
       "duration": 2236,
-      "played_up_to": 827,
+      "played_up_to": 2236,
       "url": "https://mgln.ai/e/1511/afp-955611-injected.calisto.simplecastaudio.com/1beb2301-b954-4718-ac31-006197b9bf1b/episodes/66ae1de1-16a1-49d1-b6c9-6ab693e1be53/audio/128/default.mp3?aid=rss_feed&awCollectionId=1beb2301-b954-4718-ac31-006197b9bf1b&awEpisodeId=66ae1de1-16a1-49d1-b6c9-6ab693e1be53&feed=rZ0cYk12",
       "listened_date": "2026-04-10T01:51:59.567317+00:00"
     },
@@ -51,7 +51,7 @@
       "podcast_title": "Lenny's Podcast: Product | Career | Growth",
       "published_at": "2026-04-05T12:31:45Z",
       "duration": 6768,
-      "played_up_to": 974,
+      "played_up_to": 3627,
       "url": "https://api.substack.com/feed/podcast/192660974/b8f2d64f00864328ab4d430039ff6b58.mp3",
       "listened_date": "2026-04-08T23:16:13.077668+00:00"
     },
@@ -100,13 +100,13 @@
       "played_up_to": 3093
     }
   ],
-  "last_synced": "2026-04-10T12:53:37.380681+00:00",
+  "last_synced": "2026-04-10T13:49:54.122689+00:00",
   "stats": {
     "timeSilenceRemoval": "0",
     "timeSkipping": "45",
     "timeIntroSkipping": "0",
-    "timeVariableSpeed": "12067",
-    "timeListened": "11878",
+    "timeVariableSpeed": "14313",
+    "timeListened": "13711",
     "timesStartedAt": "2026-04-08T00:20:09Z"
   }
 }
