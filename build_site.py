@@ -68,10 +68,13 @@ def build():
 
             ep_notes = notes.get(ep.get("uuid", ""), {})
             notes_html = ""
+            note_parts = ""
             if ep_notes.get("reason"):
-                notes_html += f'<div class="episode-note"><span class="note-label">Why I listened:</span> {escape(ep_notes["reason"])}</div>'
+                note_parts += f'<div class="episode-note"><span class="note-label">Why I listened:</span> {escape(ep_notes["reason"])}</div>'
             if ep_notes.get("takeaways"):
-                notes_html += f'<div class="episode-note"><span class="note-label">Takeaways:</span> {escape(ep_notes["takeaways"])}</div>'
+                note_parts += f'<div class="episode-note"><span class="note-label">Takeaways:</span> {escape(ep_notes["takeaways"])}</div>'
+            if note_parts:
+                notes_html = f'<details class="episode-notes-toggle"><summary></summary>{note_parts}</details>'
 
             episodes_html += f"""<div class="episode">
   <img class="episode-art" src="{artwork_url}" alt="{escape(ep.get('podcast_title', ''))}" loading="lazy">

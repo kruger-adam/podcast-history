@@ -105,6 +105,38 @@ def sync_sheet():
     else:
         print("No new episodes to add to sheet")
 
+    # Ensure "Controls" tab exists with a sync checkbox
+    try:
+        controls = spreadsheet.worksheet("Controls")
+    except gspread.exceptions.WorksheetNotFound:
+        controls = spreadsheet.add_worksheet("Controls", rows=5, cols=2)
+        controls.update("A1:B3", [
+            ["Sync Now", ""],
+            [False, ""],
+            ["", "Check the box above to trigger a sync from Pocket Casts."],
+        ])
+        controls.format("A1", {"textFormat": {"bold": True}})
+        controls.format("B3", {"textFormat": {"italic": True}, "wrapStrategy": "WRAP"})
+        # Format A2 as a checkbox
+        spreadsheet.batch_update({
+            "requests": [{
+                "setDataValidation": {
+                    "range": {
+                        "sheetId": controls.id,
+                        "startRowIndex": 1,
+                        "endRowIndex": 2,
+                        "startColumnIndex": 0,
+                        "endColumnIndex": 1,
+                    },
+                    "rule": {
+                        "condition": {"type": "BOOLEAN"},
+                        "showCustomUi": True,
+                    },
+                }
+            }]
+        })
+        print("Created 'Controls' sheet with sync checkbox")
+
     # Read back all notes (re-fetch after insert)
     all_values = worksheet.get_all_values()
     notes = {}

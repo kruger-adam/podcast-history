@@ -146,6 +146,30 @@
       text-align: center;
     }
 
+    .episode-notes-toggle {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 0.4rem;
+    }
+
+    .episode-notes-toggle summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.75rem;
+      list-style: none;
+    }
+
+    .episode-notes-toggle summary::-webkit-details-marker { display: none; }
+
+    .episode-notes-toggle summary::before {
+      content: "Notes ▸";
+    }
+
+    .episode-notes-toggle[open] summary::before {
+      content: "Notes ▾";
+    }
+
     .episode-note {
       font-size: 0.8rem;
       color: var(--text-dim);
