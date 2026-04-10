@@ -18,7 +18,7 @@
       "podcast_title": "Win-Win with Liv Boeree",
       "published_at": "2024-03-29T17:16:35Z",
       "duration": 3353,
-      "played_up_to": 1076,
+      "played_up_to": 3353,
       "url": "https://anchor.fm/s/eefcd0ac/podcast/play/84717100/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-29%2F372613365-44100-2-d05dd363ab3b2.mp3",
       "listened_date": "2026-04-09T13:06:19.168488+00:00"
     },
@@ -29,7 +29,7 @@
       "podcast_title": "Win-Win with Liv Boeree",
       "published_at": "2025-02-21T02:40:00Z",
       "duration": 5403,
-      "played_up_to": 2730,
+      "played_up_to": 5403,
       "url": "https://anchor.fm/s/eefcd0ac/podcast/play/98742142/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-1-21%2F395261310-44100-2-061ec960af06b.mp3",
       "listened_date": "2026-04-08T23:16:13.077668+00:00"
     },
@@ -85,7 +85,8 @@
       "published_at": "2025-03-13T16:06:50Z",
       "duration": 5806,
       "url": "https://anchor.fm/s/eefcd0ac/podcast/play/99764184/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-2-12%2F396460925-44100-2-532d6170433b9.mp3",
-      "listened_date": "2026-04-08T13:05:33.699325+00:00"
+      "listened_date": "2026-04-08T13:05:33.699325+00:00",
+      "played_up_to": 5806
     },
     {
       "uuid": "cc572c51-e2bd-41fe-a138-d4f8ecba3549",
@@ -95,10 +96,11 @@
       "published_at": "2020-03-05T06:33:00Z",
       "duration": 3123,
       "url": "https://chrt.fm/track/15E3G4/traffic.megaphone.fm/GLT5055930607.mp3?updated=1644002651",
-      "listened_date": "2026-04-08T00:37:00.336896+00:00"
+      "listened_date": "2026-04-08T00:37:00.336896+00:00",
+      "played_up_to": 3093
     }
   ],
-  "last_synced": "2026-04-10T01:51:59.567317+00:00",
+  "last_synced": "2026-04-10T12:21:51.073831+00:00",
   "stats": {
     "timeSilenceRemoval": "0",
     "timeSkipping": "45",
