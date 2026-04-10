@@ -68,13 +68,31 @@ def build():
 
             ep_notes = notes.get(ep.get("uuid", ""), {})
             notes_html = ""
-            note_parts = ""
-            if ep_notes.get("reason"):
-                note_parts += f'<div class="episode-note"><span class="note-label">Why I listened:</span> {escape(ep_notes["reason"])}</div>'
-            if ep_notes.get("takeaways"):
-                note_parts += f'<div class="episode-note"><span class="note-label">Takeaways:</span> {escape(ep_notes["takeaways"])}</div>'
-            if note_parts:
-                notes_html = f'<details class="episode-notes-toggle"><summary></summary>{note_parts}</details>'
+            if ep_notes.get("reason") or ep_notes.get("takeaways"):
+                # Build full notes content
+                full_parts = []
+                if ep_notes.get("reason"):
+                    full_parts.append(f'<span class="note-label">Why I listened:</span> {escape(ep_notes["reason"])}')
+                if ep_notes.get("takeaways"):
+                    full_parts.append(f'<span class="note-label">Takeaways:</span> {escape(ep_notes["takeaways"])}')
+                full_html = "<br>".join(full_parts)
+
+                # Build preview from first note's text
+                first_text = ep_notes.get("reason") or ep_notes.get("takeaways") or ""
+                preview_limit = 120
+                if len(first_text) <= preview_limit and not (ep_notes.get("reason") and ep_notes.get("takeaways")):
+                    # Short enough to show in full, no toggle needed
+                    notes_html = f'<div class="episode-notes">{full_html}</div>'
+                else:
+                    preview_text = first_text[:preview_limit].rsplit(" ", 1)[0] + "..."
+                    first_label = "Why I listened" if ep_notes.get("reason") else "Takeaways"
+                    preview_html = f'<span class="note-label">{first_label}:</span> {escape(preview_text)}'
+                    notes_html = (
+                        f'<div class="episode-notes">'
+                        f'<span class="note-preview">{preview_html} <span class="note-toggle">more</span></span>'
+                        f'<div class="note-full">{full_html} <span class="note-toggle">less</span></div>'
+                        f'</div>'
+                    )
 
             episodes_html += f"""<div class="episode">
   <img class="episode-art" src="{artwork_url}" alt="{escape(ep.get('podcast_title', ''))}" loading="lazy">

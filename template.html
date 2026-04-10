@@ -146,31 +146,7 @@
       text-align: center;
     }
 
-    .episode-notes-toggle {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-top: 0.4rem;
-    }
-
-    .episode-notes-toggle summary {
-      cursor: pointer;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.75rem;
-      list-style: none;
-    }
-
-    .episode-notes-toggle summary::-webkit-details-marker { display: none; }
-
-    .episode-notes-toggle summary::before {
-      content: "Notes ▸";
-    }
-
-    .episode-notes-toggle[open] summary::before {
-      content: "Notes ▾";
-    }
-
-    .episode-note {
+    .episode-notes {
       font-size: 0.8rem;
       color: var(--text-dim);
       margin-top: 0.4rem;
@@ -178,6 +154,30 @@
       background: var(--surface);
       border-left: 2px solid var(--accent-dim);
       border-radius: 0 6px 6px 0;
+    }
+
+    .episode-notes .note-preview {
+      display: inline;
+    }
+
+    .episode-notes .note-full {
+      display: none;
+    }
+
+    .episode-notes.expanded .note-preview {
+      display: none;
+    }
+
+    .episode-notes.expanded .note-full {
+      display: block;
+    }
+
+    .note-toggle {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.75rem;
+      margin-left: 0.3rem;
     }
 
     .note-label {
@@ -268,5 +268,14 @@
       Powered by Pocket Casts
     </div>
   </div>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('note-toggle')) {
+        var notes = e.target.closest('.episode-notes');
+        notes.classList.toggle('expanded');
+        e.target.textContent = notes.classList.contains('expanded') ? 'less' : 'more';
+      }
+    });
+  </script>
 </body>
 </html>
