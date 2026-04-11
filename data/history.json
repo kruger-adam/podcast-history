@@ -51,7 +51,7 @@
       "podcast_title": "Lenny's Podcast: Product | Career | Growth",
       "published_at": "2026-04-05T12:31:45Z",
       "duration": 6768,
-      "played_up_to": 3627,
+      "played_up_to": 5136,
       "url": "https://api.substack.com/feed/podcast/192660974/b8f2d64f00864328ab4d430039ff6b58.mp3",
       "listened_date": "2026-04-08T23:16:13.077668+00:00"
     },
@@ -100,13 +100,13 @@
       "played_up_to": 3093
     }
   ],
-  "last_synced": "2026-04-10T13:57:37.921079+00:00",
+  "last_synced": "2026-04-11T01:29:39.101277+00:00",
   "stats": {
     "timeSilenceRemoval": "0",
     "timeSkipping": "45",
     "timeIntroSkipping": "0",
-    "timeVariableSpeed": "14313",
-    "timeListened": "13711",
+    "timeVariableSpeed": "15268",
+    "timeListened": "14348",
     "timesStartedAt": "2026-04-08T00:20:09Z"
   }
 }
