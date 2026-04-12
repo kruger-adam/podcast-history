@@ -1,6 +1,17 @@
 {
   "episodes": [
     {
+      "uuid": "f2a83cf7-f3d7-4efb-befd-220be28e26fb",
+      "title": "How scary is Claude Mythos? 303 pages in 21 minutes",
+      "podcast_uuid": "99d6aaa0-2e41-0135-52f9-452518e2d253",
+      "podcast_title": "80,000 Hours Podcast",
+      "published_at": "2026-04-10T17:07:20Z",
+      "duration": 1286,
+      "played_up_to": 64,
+      "url": "https://media.transistor.fm/b6bb89c4/09784eb2.mp3",
+      "listened_date": "2026-04-12T12:43:46.340815+00:00"
+    },
+    {
       "uuid": "8a75a33a-41c8-49d3-b1ec-3bc18fd7349f",
       "title": "#469 — Escaping an Anti-Human Future",
       "podcast_uuid": "8d728390-249c-0131-73be-723c91aeae46",
@@ -111,7 +122,7 @@
       "played_up_to": 3093
     }
   ],
-  "last_synced": "2026-04-12T01:54:25.155091+00:00",
+  "last_synced": "2026-04-12T12:43:46.340815+00:00",
   "stats": {
     "timeSilenceRemoval": "0",
     "timeSkipping": "45",
