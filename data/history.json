@@ -1,6 +1,17 @@
 {
   "episodes": [
     {
+      "uuid": "8a75a33a-41c8-49d3-b1ec-3bc18fd7349f",
+      "title": "#469 — Escaping an Anti-Human Future",
+      "podcast_uuid": "8d728390-249c-0131-73be-723c91aeae46",
+      "podcast_title": "Making Sense with Sam Harris",
+      "published_at": "2026-04-10T17:25:00Z",
+      "duration": 6566,
+      "played_up_to": 5925,
+      "url": "https://traffic.libsyn.com/secure/wakingup/469_MS_Tristan_Harris_subscriber.mp3?dest-id=480596",
+      "listened_date": "2026-04-12T01:54:25.155091+00:00"
+    },
+    {
       "uuid": "034a0fda-1a76-45d1-ba31-528749f22426",
       "title": "The Race to Build God: AI's Existential Gamble — Yoshua Bengio & Tristan Harris at Davos",
       "podcast_uuid": "ff914e00-4724-0137-f266-1d245fc5f9cf",
@@ -100,13 +111,13 @@
       "played_up_to": 3093
     }
   ],
-  "last_synced": "2026-04-11T12:40:07.031262+00:00",
+  "last_synced": "2026-04-12T01:54:25.155091+00:00",
   "stats": {
     "timeSilenceRemoval": "0",
     "timeSkipping": "45",
     "timeIntroSkipping": "0",
-    "timeVariableSpeed": "15268",
-    "timeListened": "14348",
+    "timeVariableSpeed": "18835",
+    "timeListened": "16726",
     "timesStartedAt": "2026-04-08T00:20:09Z"
   }
 }
